@@ -6,7 +6,6 @@ const usernames = [
     'jill',
     'bill',
     'ted',
-    'sue',
     'ann',
     'beth',
     'sam',
@@ -36,7 +35,11 @@ const usernames = [
   
   const getRandomArrItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
   
-  const getRandomName = () => `${getRandomArrItem(usernames)} ${getRandomArrItem(usernames)}`;
+  const getRandomName = () => {
+    const username1 = getRandomArrItem(usernames);
+    const username2 = getRandomArrItem(usernames);
+    return `${username1} ${username2}`;
+  };
   
   const getRandomThoughts = (count) => {
     const results = [];
@@ -64,5 +67,19 @@ const usernames = [
     return results;
   };
   
+  const generateUniqueEmail = () => {
+    const domain = 'example.com';
+    const randomString = Math.random().toString(36).substring(7);
+    return `${randomString}@${domain}`;
+  };
+  
+  const users = [];
+  
+  users.push({
+    username: getRandomName(),
+    email: generateUniqueEmail(),
+  });
+  
   module.exports = { getRandomName, getRandomThoughts };
+  
   
